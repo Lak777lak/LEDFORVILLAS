@@ -246,7 +246,6 @@
             flex: 1;
         }
         
-        /* New container for horizontal scrolling on mobile */
         .table-container {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -521,6 +520,41 @@
             .pricing-section {
                 padding: 0; /* Removing padding so the table can use full width of .container */
             }
+
+            /* New CSS for mobile tables */
+            .table-container {
+                overflow-x: hidden; /* Disable horizontal scrolling */
+            }
+            table {
+                width: 100%;
+            }
+            thead {
+                display: none; /* Hide table headers */
+            }
+            tbody, tr {
+                display: block; /* Make table body and rows block-level elements */
+            }
+            td {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: baseline;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding: 15px 0;
+            }
+            td:last-child {
+                border-bottom: none;
+            }
+            td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: rgba(255,255,255,0.9);
+                margin-right: 15px;
+            }
+            .price {
+                display: block;
+                text-align: right;
+            }
         }
     </style>
 </head>
@@ -649,28 +683,28 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>115"</strong></td>
-                                        <td>1370×770 - <span class="price">€7,596</span></td>
-                                        <td>1667×936 - <span class="price">€9,733</span></td>
-                                        <td>2125×1192 - <span class="price">€12,269</span></td>
+                                        <td data-label="Size"><strong>115"</strong></td>
+                                        <td data-label="P1.86mm Classic">1370×770 - <span class="price">€7,596</span></td>
+                                        <td data-label="P1.53mm Premium">1667×936 - <span class="price">€9,733</span></td>
+                                        <td data-label="P1.2mm Ultra HD">2125×1192 - <span class="price">€12,269</span></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>137"</strong></td>
-                                        <td>1624×914 - <span class="price">€10,970</span></td>
-                                        <td>1974×1111 - <span class="price">€14,076</span></td>
-                                        <td>2525×1425 - <span class="price">€17,722</span></td>
+                                        <td data-label="Size"><strong>137"</strong></td>
+                                        <td data-label="P1.86mm Classic">1624×914 - <span class="price">€10,970</span></td>
+                                        <td data-label="P1.53mm Premium">1974×1111 - <span class="price">€14,076</span></td>
+                                        <td data-label="P1.2mm Ultra HD">2525×1425 - <span class="price">€17,722</span></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>165"</strong></td>
-                                        <td>1957×1100 - <span class="price">€15,819</span></td>
-                                        <td>2379×1337 - <span class="price">€20,295</span></td>
-                                        <td>3042×1708 - <span class="price">€25,560</span></td>
+                                        <td data-label="Size"><strong>165"</strong></td>
+                                        <td data-label="P1.86mm Classic">1957×1100 - <span class="price">€15,819</span></td>
+                                        <td data-label="P1.53mm Premium">2379×1337 - <span class="price">€20,295</span></td>
+                                        <td data-label="P1.2mm Ultra HD">3042×1708 - <span class="price">€25,560</span></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>201"</strong></td>
-                                        <td>2386×1341 - <span class="price">€23,409</span></td>
-                                        <td>2900×1631 - <span class="price">€30,041</span></td>
-                                        <td>3708×2083 - <span class="price">€37,829</span></td>
+                                        <td data-label="Size"><strong>201"</strong></td>
+                                        <td data-label="P1.86mm Classic">2386×1341 - <span class="price">€23,409</span></td>
+                                        <td data-label="P1.53mm Premium">2900×1631 - <span class="price">€30,041</span></td>
+                                        <td data-label="P1.2mm Ultra HD">3708×2083 - <span class="price">€37,829</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -690,24 +724,24 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>115"</strong></td>
-                                        <td>638×358 - <span class="price">€5,983</span></td>
-                                        <td>1020×572 - <span class="price">€8,305</span></td>
+                                        <td data-label="Size"><strong>115"</strong></td>
+                                        <td data-label="P4mm Classic">638×358 - <span class="price">€5,983</span></td>
+                                        <td data-label="P2.5mm Premium">1020×572 - <span class="price">€8,305</span></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>137"</strong></td>
-                                        <td>758×428 - <span class="price">€8,642</span></td>
-                                        <td>1212×684 - <span class="price">€11,996</span></td>
+                                        <td data-label="Size"><strong>137"</strong></td>
+                                        <td data-label="P4mm Classic">758×428 - <span class="price">€8,642</span></td>
+                                        <td data-label="P2.5mm Premium">1212×684 - <span class="price">€11,996</span></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>165"</strong></td>
-                                        <td>913×513 - <span class="price">€12,465</span></td>
-                                        <td>1460×820 - <span class="price">€17,303</span></td>
+                                        <td data-label="Size"><strong>165"</strong></td>
+                                        <td data-label="P4mm Classic">913×513 - <span class="price">€12,465</span></td>
+                                        <td data-label="P2.5mm Premium">1460×820 - <span class="price">€17,303</span></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>201"</strong></td>
-                                        <td>1113×625 - <span class="price">€18,448</span></td>
-                                        <td>1780×1000 - <span class="price">€25,608</span></td>
+                                        <td data-label="Size"><strong>201"</strong></td>
+                                        <td data-label="P4mm Classic">1113×625 - <span class="price">€18,448</span></td>
+                                        <td data-label="P2.5mm Premium">1780×1000 - <span class="price">€25,608</span></td>
                                     </tr>
                                 </tbody>
                             </table>
