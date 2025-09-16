@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,6 +70,34 @@
             width: 140px;
             height: auto;
             z-index: 100;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 40px;
+            right: 50px;
+            z-index: 100;
+            display: flex;
+            gap: 15px;
+        }
+
+        .lang-button {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .lang-button:hover,
+        .lang-button.active {
+            color: white;
+            font-weight: 700;
         }
 
         /* Slides */
@@ -447,12 +475,23 @@
             .pricing-section {
                 margin-right: 0;
             }
+            .lang-switcher {
+                right: 20px;
+                top: 25px;
+            }
         }
     </style>
 </head>
 <body>
     <img src="images/logo.png" alt="MIRKIT" class="logo" 
          onerror="this.style.display='none'">
+
+    <div class="lang-switcher">
+        <button class="lang-button" data-lang="en">EN</button>
+        <button class="lang-button" data-lang="fr">FR</button>
+        <button class="lang-button active" data-lang="ru">RU</button>
+        <button class="lang-button" data-lang="uk">UKR</button>
+    </div>
 
     <div class="nav-dots">
         <div class="nav-dot active" onclick="scrollToSlide(0)"></div>
@@ -467,9 +506,9 @@
         <div class="container">
             <div class="content-grid">
                 <div>
-                    <h1>TRANSFORM YOUR VILLA INTO TOMORROW'S MASTERPIECE</h1>
-                    <p class="subtitle">Where Luxury Meets Limitless Entertainment</p>
-                    <p class="tagline">MIRKIT - CRAFTING EXPERIENCES SINCE 2001</p>
+                    <h1 data-lang-key="s1-h1">ТРАНСФОРМИРУЙТЕ СВОЮ ВИЛЛУ В ШЕДЕВР БУДУЩЕГО</h1>
+                    <p class="subtitle" data-lang-key="s1-subtitle">Где роскошь встречается с безграничными развлечениями</p>
+                    <p class="tagline" data-lang-key="s1-tagline">MIRKIT - СОЗДАЕМ ВПЕЧАТЛЕНИЯ С 2001 ГОДА</p>
                 </div>
                 <div class="image-placeholder has-image">
                     <img src="images/slide1.png" alt="Luxury Villa LED">
@@ -490,19 +529,19 @@
                     <img src="images/slide2.png" alt="Family Entertainment">
                 </div>
                 <div>
-                    <h2>Imagine Entertainment Without Boundaries</h2>
+                    <h2 data-lang-key="s2-h2">Представьте развлечения без границ</h2>
                     <div class="feature-list">
                         <div class="feature-item">
-                            <h4>HOST UNFORGETTABLE MOMENTS</h4>
-                            <p>Watch the Champions League final by the pool. Screen size? As grand as your ambition – <span class="highlight">100" to 400"+</span></p>
+                            <h4 data-lang-key="s2-feat1-title">ОРГАНИЗУЙТЕ НЕЗАБЫВАЕМЫЕ МОМЕНТЫ</h4>
+                            <p data-lang-key="s2-feat1-text">Смотрите финал Лиги чемпионов у бассейна. Размер экрана? Такой же грандиозный, как ваши амбиции – от <span class="highlight">100" до 400"+</span></p>
                         </div>
                         <div class="feature-item">
-                            <h4>EXPERIENCE PERFECTION IN ANY LIGHT</h4>
-                            <p>No more "let's wait until dark" or closed curtains. Your content shines with <span class="highlight">4500+ nits</span>, even at noon.</p>
+                            <h4 data-lang-key="s2-feat2-title">НАСЛАЖДАЙТЕСЬ ИДЕАЛЬНЫМ ИЗОБРАЖЕНИЕМ ПРИ ЛЮБОМ СВЕТЕ</h4>
+                            <p data-lang-key="s2-feat2-text">Больше не нужно ждать темноты или закрывать шторы. Ваш контент сияет с <span class="highlight">яркостью 4500+ нит</span>, даже в полдень.</p>
                         </div>
                         <div class="feature-item">
-                            <h4>ENJOY FOR GENERATIONS</h4>
-                            <p><span class="highlight">100,000 hours</span> means your grandchildren will create memories on the same stunning display.</p>
+                            <h4 data-lang-key="s2-feat3-title">РАЗВЛЕЧЕНИЯ НА ПОКОЛЕНИЯ</h4>
+                            <p data-lang-key="s2-feat3-text"><span class="highlight">100 000 часов</span> означают, что ваши внуки будут создавать воспоминания на том же потрясающем дисплее.</p>
                         </div>
                     </div>
                 </div>
@@ -519,23 +558,19 @@
         <div class="container">
             <div class="content-grid">
                 <div>
-                    <h2>Every Space Becomes Extraordinary</h2>
+                    <h2 data-lang-key="s3-h2">Каждое пространство становится необыкновенным</h2>
                     <div class="feature-list">
                         <div class="feature-item">
-                            <h4>PRIVATE CINEMA THAT RIVALS CANNES</h4>
-                            <p>• Immerse in true cinema scale - up to 8K resolution<br>
-                            • Forget projector hassles - instant on, perfect always<br>
-                            • Your guests will ask: "Is this your home or a premiere?"</p>
+                            <h4 data-lang-key="s3-feat1-title">ЧАСТНЫЙ КИНОТЕАТР, КОТОРЫЙ КОНКУРИРУЕТ С КАННСКИМ КИНОФЕСТИВАЛЕМ</h4>
+                            <p data-lang-key="s3-feat1-text">• Погрузитесь в настоящий киномасштаб – разрешение до 8K<br>• Забудьте о хлопотах с проектором – мгновенное включение, всегда идеальное изображение<br>• Ваши гости спросят: 'Это ваш дом или премьерный кинопоказ?'</p>
                         </div>
                         <div class="feature-item">
-                            <h4>GARDEN PARTIES THAT MAKE HEADLINES</h4>
-                            <p>• Wimbledon finals under the stars<br>
-                            • Art exhibitions on your facade<br>
-                            • Weather? Not your concern with IP65 protection</p>
+                            <h4 data-lang-key="s3-feat2-title">ВЕЧЕРИНКИ В САДУ, КОТОРЫЕ ПОПАДАЮТ В ЗАГОЛОВКИ НОВОСТЕЙ</h4>
+                            <p data-lang-key="s3-feat2-text">• Финалы Уимблдона под звездами<br>• Арт-выставки на вашем фасаде<br>• Погода? Это не ваша забота благодаря защите IP65</p>
                         </div>
                     </div>
-                    <p class="subtitle" style="font-style: italic; margin-top: 30px;">
-                        "The only limit is your imagination"
+                    <p class="subtitle" style="font-style: italic; margin-top: 30px;" data-lang-key="s3-quote">
+                        "Единственный предел — ваше воображение"
                     </p>
                 </div>
                 <div class="image-placeholder has-image">
@@ -552,12 +587,12 @@
 
     <section class="slide" id="slide-4">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">Select Your Perfect Canvas</h2>
+            <h2 style="text-align: center; margin-bottom: 50px;" data-lang-key="s4-h2">Выберите свой идеальный холст</h2>
             
             <div class="pricing-layout">
                 <div class="pricing-section">
                     <div class="pricing-category">
-                        <h3>INDOOR MASTERPIECES</h3>
+                        <h3 data-lang-key="s4-cat1-title">ШЕДЕВРЫ ДЛЯ ПОМЕЩЕНИЙ</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -597,7 +632,7 @@
                     </div>
 
                     <div class="pricing-category">
-                        <h3>OUTDOOR SPECTACULAR</h3>
+                        <h3 data-lang-key="s4-cat2-title">УЛИЧНЫЕ ШОУ</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -633,8 +668,8 @@
                 </div>
             </div>
 
-            <p style="text-align: center; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 30px;">
-                *Display pricing only. Professional installation and premium processing available.
+            <p style="text-align: center; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 30px;" data-lang-key="s4-footer">
+                *Цены указаны только за дисплеи в ознакомительных целях, без стоимости дополнительного оборудования и монтажных работ. Доступно значительно больше вариантов размеров и разрешений. Доступны профессиональная установка и премиальное ПО.
             </p>
         </div>
         <div class="breadcrumbs">
@@ -651,24 +686,24 @@
                     <img src="images/slide5.png" alt="MIRKIT Team">
                 </div>
                 <div>
-                    <h2>Why Leaders Choose MIRKIT</h2>
+                    <h2 data-lang-key="s5-h2">Почему лидеры выбирают MIRKIT</h2>
                     
                     <div class="partner-grid">
                         <div class="partner-card">
-                            <h4>WE SPEAK YOUR LANGUAGE</h4>
-                            <p>23 years serving luxury estates, we understand that "good enough" is never enough.</p>
+                            <h4 data-lang-key="s5-feat1-title">МЫ ГОВОРИМ НА ВАШЕМ ЯЗЫКЕ</h4>
+                            <p data-lang-key="s5-feat1-text">23 года обслуживая элитные поместья, мы понимаем, что 'достаточно хорошо' — это никогда не достаточно.</p>
                         </div>
                         <div class="partner-card">
-                            <h4>YOUR TIME IS PRECIOUS</h4>
-                            <p>Local inventory. Instant support. Problem at 7 PM Friday? Solved by Saturday brunch.</p>
+                            <h4 data-lang-key="s5-feat2-title">ВАШЕ ВРЕМЯ ЦЕННО</h4>
+                            <p data-lang-key="s5-feat2-text">Местный склад. Мгновенная поддержка. Проблема в пятницу в 7 вечера? Решена к субботнему бранчу.</p>
                         </div>
                         <div class="partner-card">
-                            <h4>CRAFTED FOR YOUR VISION</h4>
-                            <p>30+ bespoke installations. From hidden displays that rise from pools to curved art galleries.</p>
+                            <h4 data-lang-key="s5-feat3-title">СОЗДАНО ДЛЯ ВАШЕГО ВИДЕНИЯ</h4>
+                            <p data-lang-key="s5-feat3-text">Более 30 индивидуальных инсталляций. От скрытых экранов, которые поднимаются из басейнов, до изогнутых арт-галерей.</p>
                         </div>
                         <div class="partner-card">
-                            <h4>INVESTMENT PROTECTED</h4>
-                            <p>2-year warranty with lifetime support. Modular design means no complete replacements, ever.</p>
+                            <h4 data-lang-key="s5-feat4-title">ИНВЕСТИЦИЯ ПОД ЗАЩИТОЙ</h4>
+                            <p data-lang-key="s5-feat4-text">2-летняя гарантия с пожизненной поддержкой. Модульный дизайн означает, что полная замена никогда не потребуется.</p>
                         </div>
                     </div>
 
@@ -678,8 +713,8 @@
                         <div class="star"></div>
                     </div>
 
-                    <p style="text-align: center; font-size: 1.5rem; font-style: italic; margin-top: 30px;">
-                        "We don't just install screens. We create legacies."
+                    <p style="text-align: center; font-size: 1.5rem; font-style: italic; margin-top: 30px;" data-lang-key="s5-quote">
+                        "Мы не просто устанавливаем экраны. Мы создаем наследие."
                     </p>
                 </div>
             </div>
@@ -694,13 +729,13 @@
     <section class="slide" id="slide-6">
         <div class="container">
             <div class="contact-section">
-                <h2>Your Extraordinary Awaits</h2>
-                <p class="subtitle">Let's explore how LED technology can elevate your villa from impressive to unforgettable.</p>
+                <h2 data-lang-key="s6-h2">Ваша уникальность ждет вас</h2>
+                <p class="subtitle" data-lang-key="s6-subtitle">Давайте узнаем, как LED-технологии могут превратить вашу виллу из впечатляющей в незабываемую.</p>
                 
                 <div style="margin: 40px 0;">
                     <h3 style="color: white; font-size: 1.8rem;">Leonid Komarovskyi</h3>
-                    <p style="color: var(--digital-violet); font-style: italic; font-size: 1.1rem;">
-                        Your Personal LED Experience Architect
+                    <p style="color: var(--digital-violet); font-style: italic; font-size: 1.1rem;" data-lang-key="s6-job-title">
+                        Ваш Персональный Архитектор LED-Опыта
                     </p>
                 </div>
 
@@ -716,10 +751,10 @@
                     </div>
                 </div>
 
-                <button class="cta-button" onclick="openForm()">Request Exclusive Consultation</button>
+                <button class="cta-button" onclick="openForm()" data-lang-key="s6-button-text">Запросить эксклюзивную консультацию</button>
 
-                <p style="margin-top: 50px; color: rgba(255,255,255,0.6);">
-                    Join the elite 30+ villas that chose to live without limits
+                <p style="margin-top: 50px; color: rgba(255,255,255,0.6);" data-lang-key="s6-below-button-text">
+                    Присоединяйтесь к элите из 30+ вилл, которые выбрали жить без ограничений
                 </p>
 
                 <div style="display: flex; justify-content: center; margin-top: 40px;">
@@ -744,6 +779,182 @@
     </div>
 
     <script>
+        const translations = {
+            'ru': {
+                's1-h1': 'ТРАНСФОРМИРУЙТЕ СВОЮ ВИЛЛУ В ШЕДЕВР БУДУЩЕГО',
+                's1-subtitle': 'Где роскошь встречается с безграничными развлечениями',
+                's1-tagline': 'MIRKIT - СОЗДАЕМ ВПЕЧАТЛЕНИЯ С 2001 ГОДА',
+                's2-h2': 'Представьте развлечения без границ',
+                's2-feat1-title': 'ОРГАНИЗУЙТЕ НЕЗАБЫВАЕМЫЕ МОМЕНТЫ',
+                's2-feat1-text': 'Смотрите финал Лиги чемпионов у бассейна. Размер экрана? Такой же грандиозный, как ваши амбиции – от <span class="highlight">100" до 400"+</span>',
+                's2-feat2-title': 'НАСЛАЖДАЙТЕСЬ ИДЕАЛЬНЫМ ИЗОБРАЖЕНИЕМ ПРИ ЛЮБОМ СВЕТЕ',
+                's2-feat2-text': 'Больше не нужно ждать темноты или закрывать шторы. Ваш контент сияет с <span class="highlight">яркостью 4500+ нит</span>, даже в полдень.',
+                's2-feat3-title': 'РАЗВЛЕЧЕНИЯ НА ПОКОЛЕНИЯ',
+                's2-feat3-text': '<span class="highlight">100 000 часов</span> означают, что ваши внуки будут создавать воспоминания на том же потрясающем дисплее.',
+                's3-h2': 'Каждое пространство становится необыкновенным',
+                's3-feat1-title': 'ЧАСТНЫЙ КИНОТЕАТР, КОТОРЫЙ КОНКУРИРУЕТ С КАННСКИМ КИНОФЕСТИВАЛЕМ',
+                's3-feat1-text': '• Погрузитесь в настоящий киномасштаб – разрешение до 8K<br>• Забудьте о хлопотах с проектором – мгновенное включение, всегда идеальное изображение<br>• Ваши гости спросят: \'Это ваш дом или премьерный кинопоказ?\'',
+                's3-feat2-title': 'ВЕЧЕРИНКИ В САДУ, КОТОРЫЕ ПОПАДАЮТ В ЗАГОЛОВКИ НОВОСТЕЙ',
+                's3-feat2-text': '• Финалы Уимблдона под звездами<br>• Арт-выставки на вашем фасаде<br>• Погода? Это не ваша забота благодаря защите IP65',
+                's3-quote': '“Единственный предел — ваше воображение”',
+                's4-h2': 'Выберите свой идеальный холст',
+                's4-cat1-title': 'ШЕДЕВРЫ ДЛЯ ПОМЕЩЕНИЙ',
+                's4-cat2-title': 'УЛИЧНЫЕ ШОУ',
+                's4-footer': '*Цены указаны только за дисплеи в ознакомительных целях, без стоимости дополнительного оборудования и монтажных работ. Доступно значительно больше вариантов размеров и разрешений. Доступны профессиональная установка и премиальное ПО.',
+                's5-h2': 'Почему лидеры выбирают MIRKIT',
+                's5-feat1-title': 'МЫ ГОВОРИМ НА ВАШЕМ ЯЗЫКЕ',
+                's5-feat1-text': '23 года обслуживая элитные поместья, мы понимаем, что \'достаточно хорошо\' — это никогда не достаточно.',
+                's5-feat2-title': 'ВАШЕ ВРЕМЯ ЦЕННО',
+                's5-feat2-text': 'Местный склад. Мгновенная поддержка. Проблема в пятницу в 7 вечера? Решена к субботнему бранчу.',
+                's5-feat3-title': 'СОЗДАНО ДЛЯ ВАШЕГО ВИДЕНИЯ',
+                's5-feat3-text': 'Более 30 индивидуальных инсталляций. От скрытых экранов, которые поднимаются из бассейнов, до изогнутых арт-галерей.',
+                's5-feat4-title': 'ИНВЕСТИЦИЯ ПОД ЗАЩИТОЙ',
+                's5-feat4-text': '2-летняя гарантия с пожизненной поддержкой. Модульный дизайн означает, что полная замена никогда не потребуется.',
+                's5-quote': '“Мы не просто устанавливаем экраны. Мы создаем наследие.”',
+                's6-h2': 'Ваша уникальность ждет вас',
+                's6-subtitle': 'Давайте узнаем, как LED-технологии могут превратить вашу виллу из впечатляющей в незабываемую.',
+                's6-job-title': 'Ваш Персональный Архитектор LED-Опыта',
+                's6-button-text': 'Запросить эксклюзивную консультацию',
+                's6-below-button-text': 'Присоединяйтесь к элите из 30+ вилл, которые выбрали жить без ограничений',
+            },
+            'en': {
+                's1-h1': 'TRANSFORM YOUR VILLA INTO TOMORROW\'S MASTERPIECE',
+                's1-subtitle': 'Where Luxury Meets Limitless Entertainment',
+                's1-tagline': 'MIRKIT - CRAFTING EXPERIENCES SINCE 2001',
+                's2-h2': 'Imagine Entertainment Without Boundaries',
+                's2-feat1-title': 'HOST UNFORGETTABLE MOMENTS',
+                's2-feat1-text': 'Watch the Champions League final by the pool. Screen size? As grand as your ambition – <span class="highlight">100" to 400"+</span>',
+                's2-feat2-title': 'EXPERIENCE PERFECTION IN ANY LIGHT',
+                's2-feat2-text': 'No more \'let\'s wait until dark\' or closed curtains. Your content shines with <span class="highlight">4500+ nits</span>, even at noon.',
+                's2-feat3-title': 'ENJOY FOR GENERATIONS',
+                's2-feat3-text': '<span class="highlight">100,000 hours</span> means your grandchildren will create memories on the same stunning display.',
+                's3-h2': 'Every Space Becomes Extraordinary',
+                's3-feat1-title': 'PRIVATE CINEMA THAT RIVALS THE CANNES FILM FESTIVAL',
+                's3-feat1-text': '• Immerse in true cinema scale - up to 8K resolution<br>• Forget projector hassles - instant on, perfect always<br>• Your guests will ask: \'Is this your home or a premiere screening?\'',
+                's3-feat2-title': 'GARDEN PARTIES THAT MAKE HEADLINES',
+                's3-feat2-text': '• Wimbledon finals under the stars<br>• Art exhibitions on your facade<br>• Weather? Not your concern with IP65 protection',
+                's3-quote': '"The only limit is your imagination"',
+                's4-h2': 'Select Your Perfect Canvas',
+                's4-cat1-title': 'INDOOR MASTERPIECES',
+                's4-cat2-title': 'OUTDOOR SPECTACULAR',
+                's4-footer': '*Prices are for displays only, for informational purposes, and do not include the cost of additional equipment and installation work. Many more size and resolution options are available. Professional installation and premium processing are also available.',
+                's5-h2': 'Why Leaders Choose MIRKIT',
+                's5-feat1-title': 'WE SPEAK YOUR LANGUAGE',
+                's5-feat1-text': '23 years serving luxury estates, we understand that \'good enough\' is never enough.',
+                's5-feat2-title': 'YOUR TIME IS PRECIOUS',
+                's5-feat2-text': 'Local inventory. Instant support. Problem at 7 PM Friday? Solved by Saturday brunch.',
+                's5-feat3-title': 'CRAFTED FOR YOUR VISION',
+                's5-feat3-text': '30+ bespoke installations. From hidden displays that rise from pools to curved art galleries.',
+                's5-feat4-title': 'INVESTMENT PROTECTED',
+                's5-feat4-text': '2-year warranty with lifetime support. Modular design means no complete replacements, ever.',
+                's5-quote': '"We don\'t just install screens. We create legacies."',
+                's6-h2': 'Your Extraordinary Awaits',
+                's6-subtitle': 'Let\'s explore how LED technology can elevate your villa from impressive to unforgettable.',
+                's6-job-title': 'Your Personal LED Experience Architect',
+                's6-button-text': 'Request Exclusive Consultation',
+                's6-below-button-text': 'Join the elite 30+ villas that chose to live without limits',
+            },
+            'fr': {
+                's1-h1': 'TRANSFORMEZ VOTRE VILLA EN CHEF-D\'ŒUVRE DE DEMAIN',
+                's1-subtitle': 'Où le Luxe Rencontre le Divertissement Sans Limite',
+                's1-tagline': 'MIRKIT - CRÉATEURS D\'EXPÉRIENCES DEPUIS 2001',
+                's2-h2': 'Imaginez un Divertissement Sans Limites',
+                's2-feat1-title': 'ORGANISEZ DES MOMENTS INOUBLIABLES',
+                's2-feat1-text': 'Regardez la finale de la Ligue des Champions au bord de la piscine. La taille de l\'écran? Aussi grandiose que votre ambition – de <span class="highlight">100" à 400"+</span>',
+                's2-feat2-title': 'EXPÉRIMENTEZ LA PERFECTION SOUS TOUTES LES LUMIÈRES',
+                's2-feat2-text': 'Fini le \'attendons qu\'il fasse nuit\' ou les rideaux tirés. Votre contenu brille avec plus de <span class="highlight">4500 nits</span>, même en plein jour.',
+                's2-feat3-title': 'UN PLAISIR POUR DES GÉNÉRATIONS',
+                's2-feat3-text': '<span class="highlight">100 000 heures</span>, cela signifie que vos petits-enfants créeront des souvenirs sur le même écran éblouissant.',
+                's3-h2': 'Chaque Espace Devient Extraordinaire',
+                's3-feat1-title': 'UN CINÉMA PRIVÉ QUI RIVALISE AVEC LE FESTIVAL DE CANNES',
+                's3-feat1-text': '• Plongez dans une véritable expérience de cinéma – jusqu\'à une résolution 8K<br>• Oubliez les soucis de projecteur – allumage instantané, image toujours parfaite<br>• Vos invités demanderont: \'C\'est votre maison ou une projection en avant-première?\'',
+                's3-feat2-title': 'DES FÊTES DE JARDIN QUI FONT LES TITRES',
+                's3-feat2-text': '• Les finales de Wimbledon sous les étoiles<br>• Des expositions d\'art sur votre façade<br>• La météo? Ce n\'est pas votre problème grâce à la protection IP65',
+                's3-quote': '"La seule limite est votre imagination"',
+                's4-h2': 'Choisissez Votre Toile Parfaite',
+                's4-cat1-title': 'CHEFS-D\'ŒUVRE INTÉRIEURS',
+                's4-cat2-title': 'SPECTACLES EXTÉRIEURS',
+                's4-footer': '*Les prix affichés sont uniquement pour les écrans, à titre indicatif, et n\'incluent pas le coût de l\'équipement additionnel ni des travaux d\'installation. De nombreuses autres options de tailles et de résolutions sont disponibles. L\'installation professionnelle et le traitement premium sont également disponibles.',
+                's5-h2': 'Pourquoi les Leaders Choisissent MIRKIT',
+                's5-feat1-title': 'NOUS PARLONS VOTRE LANGUE',
+                's5-feat1-text': '23 ans au service de propriétés de luxe, nous comprenons que \'suffisamment bien\' n\'est jamais suffisant.',
+                's5-feat2-title': 'VOTRE TEMPS EST PRÉCIEUX',
+                's5-feat2-text': 'Inventaire local. Support instantané. Un problème le vendredi à 19h? Résolu d\'ici le brunch du samedi.',
+                's5-feat3-title': 'CRÉÉ POUR VOTRE VISION',
+                's5-feat3-text': 'Plus de 30 installations sur mesure. Des écrans cachés qui émergent des piscines aux galeries d\'art incurvées.',
+                's5-feat4-title': 'UN INVESTISSEMENT PROTÉGÉ',
+                's5-feat4-text': 'Garantie de 2 ans avec support à vie. La conception modulaire signifie qu\'un remplacement complet n\'est jamais nécessaire.',
+                's5-quote': '"Nous n\'installons pas seulement des écrans. Nous créons des héritages."',
+                's6-h2': 'Votre Extraordinaire Vous Attend',
+                's6-subtitle': 'Explorons comment la technologie LED peut faire passer votre villa d\'impressionnante à inoubliable.',
+                's6-job-title': 'Votre Architecte d\'Expérience LED Personnel',
+                's6-button-text': 'Demander une Consultation Exclusive',
+                's6-below-button-text': 'Rejoignez l\'élite des 30+ villas qui ont choisi de vivre sans limites',
+            },
+            'uk': {
+                's1-h1': 'ПЕРЕТВОРІТЬ СВОЮ ВІЛЛУ НА ШЕДЕВР МАЙБУТНЬОГО',
+                's1-subtitle': 'Де розкіш зустрічається з безмежними розвагами',
+                's1-tagline': 'MIRKIT - СТВОРЮЄМО ВРАЖЕННЯ З 2001 РОКУ',
+                's2-h2': 'Уявіть розваги без кордонів',
+                's2-feat1-title': 'ОРГАНІЗОВУЙТЕ НЕЗАБУТНІ МОМЕНТИ',
+                's2-feat1-text': 'Дивіться фінал Ліги чемпіонів біля басейну. Розмір екрану? Такий же грандіозний, як ваші амбіції – від <span class="highlight">100" до 400"+</span>',
+                's2-feat2-title': 'НАСОЛОДЖУЙТЕСЯ ІДЕАЛЬНИМ ЗОБРАЖЕННЯМ ЗА БУДЬ-ЯКОГО СВІТЛА',
+                's2-feat2-text': 'Більше не потрібно чекати темряви або закривати штори. Ваш контент сяє з яскравістю <span class="highlight">4500+ ніт</span>, навіть опівдні.',
+                's2-feat3-title': 'РОЗВАГИ НА ПОКОЛІННЯ',
+                's2-feat3-text': '<span class="highlight">100 000 годин</span> означають, що ваші онуки створюватимуть спогади на тому ж приголомшливому дисплеї.',
+                's3-h2': 'Кожен простір стає надзвичайним',
+                's3-feat1-title': 'ПРИВАТНИЙ КІНОТЕАТР, ЩО КОНКУРУЄ З КАННСЬКИМ КІНОФЕСТИВАЛЕМ',
+                's3-feat1-text': '• Пориньте в справжній кіномасштаб – до 8K роздільної здатності<br>• Забудьте про клопоти з проектором – миттєве ввімкнення, завжди ідеальне зображення<br>• Ваші гості запитають: \'Це ваш дім чи прем\'єрний кінопоказ?\'',
+                's3-feat2-title': 'ВЕЧІРКИ В САДУ, ЩО ПОТРАПЛЯЮТЬ В ЗАГОЛОВКИ НОВИН',
+                's3-feat2-text': '• Фінали Вімблдону під зірками<br>• Арт-виставки на вашому фасаді<br>• Погода? Це не ваша турбота завдяки захисту IP65',
+                's3-quote': '“Єдина межа — ваша уява”',
+                's4-h2': 'Виберіть своє ідеальне полотно',
+                's4-cat1-title': 'ШЕДЕВРИ ДЛЯ ПРИМІЩЕНЬ',
+                's4-cat2-title': 'ВУЛИЧНІ ШОУ',
+                's4-footer': '*Ціни вказано лише за дисплеї в ознайомчих цілях, без вартості додаткового обладнання та монтажних робіт. Доступно значно більше варіантів розмірів та роздільних здатностей. Доступне професійне встановлення та преміальне програмне забезпечення.',
+                's5-h2': 'Чому лідери обирають MIRKIT',
+                's5-feat1-title': 'МИ ГОВОРИМО ВАШОЮ МОВОЮ',
+                's5-feat1-text': '23 роки обслуговуючи елітні маєтки, ми розуміємо, що \'достатньо добре\' — це ніколи не достатньо.',
+                's5-feat2-title': 'ВАШ ЧАС БЕЗЦІННИЙ',
+                's5-feat2-text': 'Місцевий склад. Миттєва підтримка. Проблема в п\'ятницю о 19:00? Вирішено до суботнього бранчу.',
+                's5-feat3-title': 'СТВОРЕНО ДЛЯ ВАШОГО БАЧЕННЯ',
+                's5-feat3-text': 'Більше 30 індивідуальних інсталяцій. Від прихованих екранів, що піднімаються з басейнів, до вигнутих арт-галерей.',
+                's5-feat4-title': 'ІНВЕСТИЦІЯ ПІД ЗАХИСТОМ',
+                's5-feat4-text': '2-річна гарантія з пожиттєвою підтримкою. Модульний дизайн означає, що повна заміна ніколи не знадобиться.',
+                's5-quote': '“Ми не просто встановлюємо екрани. Ми створюємо спадщину.”',
+                's6-h2': 'Ваша надзвичайність чекає на вас',
+                's6-subtitle': 'Давайте дослідимо, як LED-технології можуть перетворити вашу віллу з вражаючої на незабутню.',
+                's6-job-title': 'Ваш Персональний Архітектор LED-Досвіду',
+                's6-button-text': 'Запросити ексклюзивну консультацію',
+                's6-below-button-text': 'Приєднайтеся до еліти з 30+ вілл, які вирішили жити без обмежень',
+            }
+        };
+
+        const elements = document.querySelectorAll('[data-lang-key]');
+        const langButtons = document.querySelectorAll('.lang-button');
+        
+        function updateContent(lang) {
+            elements.forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedLang = button.getAttribute('data-lang');
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                updateContent(selectedLang);
+            });
+        });
+
+        // Set initial language to Russian
+        updateContent('ru');
+
         // Navigation
         function scrollToSlide(index) {
             const slides = document.querySelectorAll('.slide');
