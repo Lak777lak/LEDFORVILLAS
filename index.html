@@ -24,12 +24,16 @@
             --gradient-button: linear-gradient(135deg, #17A9E5 0%, #E53D92 100%);
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--deep-space);
             color: white;
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory; /* Добавляет "прилипание" к слайдам */
         }
 
         /* Navigation */
@@ -75,6 +79,7 @@
             align-items: center;
             position: relative;
             background: linear-gradient(180deg, var(--deep-space) 0%, var(--deep-space-light) 100%);
+            scroll-snap-align: start; /* Слайды "прилипают" к началу области прокрутки */
         }
 
         .container {
@@ -83,7 +88,7 @@
             margin: 0 auto;
             padding: 0 50px;
         }
-
+        
         /* Content Grid Layout */
         .content-grid {
             display: grid;
@@ -161,21 +166,6 @@
             border: none;
         }
 
-        .placeholder-text {
-            text-align: center;
-            color: rgba(255,255,255,0.4);
-            padding: 20px;
-        }
-
-        .placeholder-text h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .placeholder-text p {
-            font-size: 0.9rem;
-        }
-
         /* Features */
         .feature-list {
             margin: 40px 0;
@@ -203,13 +193,13 @@
         }
 
         .highlight {
-            color: var(--hyper-pink);
+            color: var(--cyber-sky);
             font-weight: 600;
         }
 
         /* Pricing Tables */
         .pricing-section {
-            margin: 40px 0;
+            flex: 1;
         }
 
         .pricing-category {
@@ -251,6 +241,13 @@
         .price {
             color: var(--cyber-sky);
             font-weight: 600;
+        }
+        
+        /* Flexbox layout for Slide 4 content */
+        .pricing-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
         }
 
         /* CTA Button */
@@ -444,13 +441,18 @@
                 left: 20px;
                 top: 20px;
             }
+            .pricing-layout {
+                flex-direction: column;
+            }
+            .pricing-section {
+                margin-right: 0;
+            }
         }
     </style>
 </head>
 <body>
     <img src="images/logo.png" alt="MIRKIT" class="logo" 
-         onerror="this.style.display='none'"
-         title="Add logo.png to images folder">
+         onerror="this.style.display='none'">
 
     <div class="nav-dots">
         <div class="nav-dot active" onclick="scrollToSlide(0)"></div>
@@ -492,15 +494,15 @@
                     <div class="feature-list">
                         <div class="feature-item">
                             <h4>HOST UNFORGETTABLE MOMENTS</h4>
-                            <p>Watch the Champions League final by the pool. Screen size? As grand as your ambition – <span style="color: var(--cyber-sky); font-weight: 600;">100" to 400"+</span></p>
+                            <p>Watch the Champions League final by the pool. Screen size? As grand as your ambition – <span class="highlight">100" to 400"+</span></p>
                         </div>
                         <div class="feature-item">
                             <h4>EXPERIENCE PERFECTION IN ANY LIGHT</h4>
-                            <p>No more "let's wait until dark" or closed curtains. Your content shines with <span style="color: var(--cyber-sky); font-weight: 600;">4500+ nits</span>, even at noon.</p>
+                            <p>No more "let's wait until dark" or closed curtains. Your content shines with <span class="highlight">4500+ nits</span>, even at noon.</p>
                         </div>
                         <div class="feature-item">
                             <h4>ENJOY FOR GENERATIONS</h4>
-                            <p><span style="color: var(--cyber-sky); font-weight: 600;">100,000 hours</span> means your grandchildren will create memories on the same stunning display.</p>
+                            <p><span class="highlight">100,000 hours</span> means your grandchildren will create memories on the same stunning display.</p>
                         </div>
                     </div>
                 </div>
@@ -552,92 +554,88 @@
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 50px;">Select Your Perfect Canvas</h2>
             
-            <div class="pricing-section">
-                <div class="pricing-category">
-                    <h3>INDOOR MASTERPIECES</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Size</th>
-                                <th>P1.86mm Classic</th>
-                                <th>P1.53mm Premium</th>
-                                <th>P1.2mm Ultra HD</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>115"</strong></td>
-                                <td>1370×770 - <span class="price">€7,596</span></td>
-                                <td>1667×936 - <span class="price">€9,733</span></td>
-                                <td>2125×1192 - <span class="price">€12,269</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>137"</strong></td>
-                                <td>1624×914 - <span class="price">€10,970</span></td>
-                                <td>1974×1111 - <span class="price">€14,076</span></td>
-                                <td>2525×1425 - <span class="price">€17,722</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>165"</strong></td>
-                                <td>1957×1100 - <span class="price">€15,819</span></td>
-                                <td>2379×1337 - <span class="price">€20,295</span></td>
-                                <td>3042×1708 - <span class="price">€25,560</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>201"</strong></td>
-                                <td>2386×1341 - <span class="price">€23,409</span></td>
-                                <td>2900×1631 - <span class="price">€30,041</span></td>
-                                <td>3708×2083 - <span class="price">€37,829</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="pricing-layout">
+                <div class="pricing-section">
+                    <div class="pricing-category">
+                        <h3>INDOOR MASTERPIECES</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>P1.86mm Classic</th>
+                                    <th>P1.53mm Premium</th>
+                                    <th>P1.2mm Ultra HD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>115"</strong></td>
+                                    <td>1370×770 - <span class="price">€7,596</span></td>
+                                    <td>1667×936 - <span class="price">€9,733</span></td>
+                                    <td>2125×1192 - <span class="price">€12,269</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>137"</strong></td>
+                                    <td>1624×914 - <span class="price">€10,970</span></td>
+                                    <td>1974×1111 - <span class="price">€14,076</span></td>
+                                    <td>2525×1425 - <span class="price">€17,722</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>165"</strong></td>
+                                    <td>1957×1100 - <span class="price">€15,819</span></td>
+                                    <td>2379×1337 - <span class="price">€20,295</span></td>
+                                    <td>3042×1708 - <span class="price">€25,560</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>201"</strong></td>
+                                    <td>2386×1341 - <span class="price">€23,409</span></td>
+                                    <td>2900×1631 - <span class="price">€30,041</span></td>
+                                    <td>3708×2083 - <span class="price">€37,829</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <div class="pricing-category">
-                    <h3>OUTDOOR SPECTACULAR</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Size</th>
-                                <th>P4mm Classic</th>
-                                <th>P2.5mm Premium</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>115"</strong></td>
-                                <td>638×358 - <span class="price">€5,983</span></td>
-                                <td>1020×572 - <span class="price">€8,305</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>137"</strong></td>
-                                <td>758×428 - <span class="price">€8,642</span></td>
-                                <td>1212×684 - <span class="price">€11,996</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>165"</strong></td>
-                                <td>913×513 - <span class="price">€12,465</span></td>
-                                <td>1460×820 - <span class="price">€17,303</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>201"</strong></td>
-                                <td>1113×625 - <span class="price">€18,448</span></td>
-                                <td>1780×1000 - <span class="price">€25,608</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="pricing-category">
+                        <h3>OUTDOOR SPECTACULAR</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>P4mm Classic</th>
+                                    <th>P2.5mm Premium</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>115"</strong></td>
+                                    <td>638×358 - <span class="price">€5,983</span></td>
+                                    <td>1020×572 - <span class="price">€8,305</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>137"</strong></td>
+                                    <td>758×428 - <span class="price">€8,642</span></td>
+                                    <td>1212×684 - <span class="price">€11,996</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>165"</strong></td>
+                                    <td>913×513 - <span class="price">€12,465</span></td>
+                                    <td>1460×820 - <span class="price">€17,303</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>201"</strong></td>
+                                    <td>1113×625 - <span class="price">€18,448</span></td>
+                                    <td>1780×1000 - <span class="price">€25,608</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                
-                <p style="text-align: center; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 30px;">
-                    *Display pricing only. Professional installation and premium processing available.
-                </p>
             </div>
 
-            <div style="display: flex; justify-content: center; margin-top: 40px;">
-                <div class="image-placeholder has-image" style="max-width: 600px;">
-                    <img src="images/slide4.png" alt="Luxury Interior">
-                </div>
-            </div>
+            <p style="text-align: center; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 30px;">
+                *Display pricing only. Professional installation and premium processing available.
+            </p>
         </div>
         <div class="breadcrumbs">
             <span>Mirkit Led</span>
@@ -724,8 +722,8 @@
                     Join the elite 30+ villas that chose to live without limits
                 </p>
 
-                <div style="margin-top: 40px;">
-                    <div class="image-placeholder has-image" style="max-width: 800px; margin: 0 auto;">
+                <div style="display: flex; justify-content: center; margin-top: 40px;">
+                    <div class="image-placeholder has-image" style="max-width: 540px;">
                         <img src="images/slide6.png" alt="Sunset Villa">
                     </div>
                 </div>
@@ -749,35 +747,8 @@
         // Navigation
         function scrollToSlide(index) {
             const slides = document.querySelectorAll('.slide');
-            slides[index].scrollIntoView({ behavior: 'smooth' });
-            updateNavDots(index);
+            slides[index].scrollIntoView();
         }
-
-        function updateNavDots(activeIndex) {
-            const dots = document.querySelectorAll('.nav-dot');
-            dots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        // Update navigation dots on scroll
-        window.addEventListener('scroll', () => {
-            const slides = document.querySelectorAll('.slide');
-            const scrollPosition = window.scrollY + window.innerHeight / 2;
-            
-            slides.forEach((slide, index) => {
-                const slideTop = slide.offsetTop;
-                const slideBottom = slideTop + slide.offsetHeight;
-                
-                if (scrollPosition >= slideTop && scrollPosition < slideBottom) {
-                    updateNavDots(index);
-                }
-            });
-        });
 
         // Form Modal
         function openForm() {
@@ -793,6 +764,29 @@
             if (e.target === this) {
                 closeForm();
             }
+        });
+
+        // Update active nav dot on scroll-snap
+        const slides = document.querySelectorAll('.slide');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.7 
+        };
+
+        const slideObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                const navDots = document.querySelectorAll('.nav-dot');
+                if (entry.isIntersecting) {
+                    const slideIndex = Array.from(slides).indexOf(entry.target);
+                    navDots.forEach(dot => dot.classList.remove('active'));
+                    navDots[slideIndex].classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        slides.forEach(slide => {
+            slideObserver.observe(slide);
         });
     </script>
 </body>
